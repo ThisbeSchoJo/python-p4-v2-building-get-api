@@ -48,7 +48,7 @@ def game_by_id(id):
 @app.route('/games/users/<int:id>')
 def game_users_by_id(id):
     game = Game.query.filter(Game.id ==id).first()
-    users = [user.to_dict(rules=('-reviews',)) doe user in game.users]
+    users = [user.to_dict(rules=('-reviews',)) for user in game.users]
     response = make_response(
         users,
         200
